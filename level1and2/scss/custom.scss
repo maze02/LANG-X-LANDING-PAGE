@@ -1,0 +1,41 @@
+/* import only the necessary Bootstrap files */
+@import "../node_modules/bootstrap/scss/functions"; 
+@import "../node_modules/bootstrap/scss/variables";
+/* -------begin customization-------- */
+
+
+/*personalised bootstrap colour palette*/
+$theme-colors: (
+    "primary":  #9ACD32,
+    "secondary": #d1e8a1, /*hsl(0%, 0%, 60),*/ /*dusty grey*/
+    "success": #c0e0f0,
+    "info": #dcca70,
+    "warning": #ffc107,
+    "danger": #801244,
+    "light":  #f7fbef,/*  hsl(0%, 0%, 83),*/ /*light grey*/
+    "dark": #416642
+);
+
+
+$colors: (
+  "blue":       #4571CC,
+  "indigo":     #5124FF,
+  "purple":     #6532cd,
+  "pink":       #CC2772,
+  "red":        #DB2222,
+  "orange":     #CC7127,
+  "yellow":     #E3E22B,
+  "teal":       #66E32B,
+  "cyan":       #2BE3B4,
+  "white":      #C7FF57,
+  "gray":       #BDB09B,
+  "gray-dark":  #6E6658
+) ;
+
+/*
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+*/
+
+@import "../node_modules/bootstrap/scss/bootstrap";

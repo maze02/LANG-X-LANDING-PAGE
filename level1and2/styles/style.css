@@ -1,0 +1,683 @@
+/* ---------------------------------------------
+Table of contents
+------------------------------------------------
+
+01. Css reset
+02. Global styles
+03. Header -> navbar & scroll to section functionality that works.
+04. Modals
+05. Slider
+06. About
+07. Tips
+08. Contact
+09. Footer
+
+--------------------------------------------- */
+/* ********************************************* */
+
+/* ---------------------------------------------
+01. css reset done to the best I could
+--------------------------------------------- */
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*No bullet Points*/
+ul{
+    list-style-type: none;
+  }
+/* ---------------------------------------------
+02. global styles
+--------------------------------------------- */
+html{
+    scroll-behavior: smooth;
+    min-width: 320px;
+}
+
+/*FONT-SIZE*/
+
+html{
+    font-size:1rem;
+    font-family:'Montserrat', sans-serif;
+}
+
+h1{
+    font-size:1.8rem;
+}
+
+h4{
+    font-size:1.2rem;
+}
+p{
+    font-size:0.95rem;
+}
+
+/*COLOUR PALETTE*/
+:root{
+    --gallery: #2b2d2f;
+    --mediumgrey: hsl(0, 0%, 50%);
+    --mercury:hsl(0, 0%, 89%);
+    --alto:rgb(199, 199, 199);
+    --purple: #6532cd;
+    --violet:   #b332cd;
+    --light-green: #e8f3d0;
+    --white: #fff;
+
+    /*social-network colours*/
+    --facebook-blue:rgb(66,103,178);
+
+    /*bootstrap themes modified in scss, added for use of  multiple classes here*/
+    --primary:  #9ACD32;
+    --secondary: #d1e8a1; /*hsl(0%, 0%, 60),*/ /*dusty grey*/
+    --success: #5B8012;
+    --info: #dcca70;
+    --warning: #ffc107;
+    --danger: #801244;
+    --light:  #f7fbef;/*  hsl(0%, 0%, 83),*/ /*light grey*/
+    --dark: #416642;
+}
+
+/*Body Background colour*/
+body{
+    background-color: var(--primary);
+}
+
+/* ---------------------------------------------
+03. header -> navbar
+--------------------------------------------- */
+
+/*sizing of items i.e. logo*/
+#logo-nav{
+    width:8em;   
+}
+
+#nav-login-btns button{
+    width:7em; 
+    padding: 0em 0em 0em 0em;
+    margin:0em 0em 0em 0em;  
+}
+
+/*removing bootstrap burger menu outline*/
+.navbar-toggler, button, .btn:focus{
+    border:none;
+    outline:none !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    outline: none !important;
+}
+/* end of removing effects*** */
+
+/*burger menu*/
+.navbar-menu {
+    display: inline-block;
+    cursor: pointer;
+}
+
+/*burger menu animation adapted from 
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js*/
+.bar1, .bar2, .bar3 {
+    width: 20px;
+    height: 2px;
+    background-color: #333;
+    margin: 9px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+/*end of burger menu animation styles*/
+
+/*hover effects of the burger menu*/
+.navbar-menu:hover{
+    background-color: var(--primary);
+    padding:0.1em 0.5em 0.1em 0.5em;
+    transform: scale(1.1);
+    border-radius: 15px;
+}
+
+/*nav bar login and sign in buttons*/
+#nav-login-btns{ /*general wrapper for the buttons*/
+display:flex;
+}
+
+.nav-login-signup-btns{ /*individual buttons*/
+    cursor: pointer;
+}
+
+
+/*colours for navbar items*/
+#nav-login-btns button, #menu ul li a{
+    color: var(--gallery);
+}
+/*hover effects colours for navbar items*/
+#nav-login-btns button:hover, #menu ul li a:hover{
+    background-color:var(--primary);
+    color:var(--white);
+    border-radius: 15px;
+}
+/*end of hover effects*/
+
+/*positioning of items on the navbar: burger menu, logo and login buttons*************/
+.navbar{
+    justify-content: center;
+    flex-wrap: nowrap !important;
+}
+
+#menu{ /*aka all the menu list items*/
+    order:1;
+    width:100%;
+}
+
+.navbar-toggler{
+    margin-right: auto;
+    align-self: center !important;
+}
+
+.navbar-brand{
+    margin-right: auto;
+}
+
+.navbar{
+    flex-wrap:wrap !important; 
+}
+
+@media only screen and (max-width: 355px){
+.navbar-toggler{
+    margin-left: -9px !important;
+    margin-right:-9px !important;
+    }
+.navbar-brand{
+    margin-right: -5px !important;
+    margin-left: -5px !important;
+    }
+}
+
+
+/*QUESTION how can I move burger menu to the right in this responsive media query*/
+@media only screen and (min-width: 369px){
+    .navbar{
+        justify-content: center;
+    }
+    .navbar-toggler{
+        justify-content:end;
+        align-self: flex-end;
+        }
+        
+
+/* tests
+  
+    .navbar-toggler{
+        margin-left:10px;
+        display:flex;
+    }
+
+    .navbar-menu{
+        margin-left:20px !important;
+    }
+*/
+    #nav-login-btns{
+        display:flex;
+        flex-direction: row !important;
+        width:fit-content;
+    }
+}
+
+@media only screen and (min-width: 370px){
+    #nav-login-btns{
+        display:flex;
+        flex-direction: column !important;
+    }
+}
+
+@media only screen and (min-width: 481px){
+    #nav-login-btns{
+        display:flex;
+        flex-direction: row !important;
+    }
+}
+@media only screen and (min-width: 663px){
+    .navbar-brand{
+        justify-content: start;
+        
+    }
+}
+@media only screen and (min-width: 900px){
+    #menu{ /*aka all the menu list items*/
+    order:0;
+    width:auto;
+    }
+}
+
+
+/*scroll to section  added  effect so it scrolls to the title WORKS but not for the burger menu 
+But need to add a different invisible heading it goes to i.e. not #about but 
+href="#about-anchor" and then add a <span></span> just above the section element with id="about"*/ 
+
+:target{
+    display:block;
+    position: relative;
+    top:-120px;
+    visibility:hidden;
+}
+
+
+
+
+/*
+@media only screen and (min-width: 991px){
+    :target{
+    top:-350px;
+    }
+    #contact-us-anchor:target{
+        top:-300px;
+    }
+}
+
+@media only screen and (min-width: 980px){
+    :target{
+    top:-440px;
+    }
+    #contact-us-anchor:target{
+        top:-350px;
+    }
+}
+*/
+/* 
+---------------------------------------------
+ 04.0 main
+--------------------------------------------- 
+*/
+
+.enter-buttons{
+    width: 130px;
+    height:50px;
+    border-radius: 7px;
+}
+
+.enter-buttons:hover{
+    background-color:var(--purple);
+    color: var(--alto);
+    transform: scale(1.1);
+    box-shadow: 1px 1px 5px  rgba(0,0,0,0.6);
+}
+/* 
+---------------------------------------------
+ 04.1 modals
+--------------------------------------------- 
+*/
+
+#modal-login-btn{
+    margin: 0em 2em 3em 2em;
+    width:80%;
+    height:2.2em;
+}
+
+.facebook-btn{
+    border-radius: 5px 0px 0px 5px;
+}
+
+.google-btn{
+    border-radius: 0px 5px 5px 0px;
+}
+
+.google-btn, .facebook-btn{
+    background-color: var(--mercury);
+    box-shadow: 1px 1px 5px  rgba(0,0,0,0.6);
+    -moz-box-shadow: 1px 1px 5px  rgba(0,0,0,0.6);
+    -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 1px 1px 5px  rgba(0,0,0,0.6);
+}
+
+input-login-signup{
+    text-align:center;
+}
+
+.login-details{
+    margin: 0em 2em 6em 2em;
+    width:auto;
+    height:2.2em;
+    border: 1px solid grey;
+    border-radius:7px;
+}
+
+.main-heading{
+    margin-bottom:-0.5em;
+}
+.call-to-action{
+    margin-top:-0.8em;
+}
+.social-networks{
+ margin-top:-1em;
+}
+
+.login-signup{
+    margin-top: -0.5em;
+}
+
+#modal-login-footer{
+    margin:-2em 0em 2em 0em;
+
+}
+
+/*font-awesome icon*/
+.fa-google {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-facebook-f{
+color:var(--facebook-blue);
+}
+
+
+/*modal styling for input fields*/
+.round-m{
+    border-radius:20px;
+}
+
+input{
+    border: 1px solid grey;
+    background-color: var(--light-alto);
+    height:2.2em;
+}
+
+.btn-shadow{
+    background-color: var(--mercury);
+    box-shadow: 1px 1px 5px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 1px 1px 5px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  -o-box-shadow: 1px 1px 5px  rgba(0,0,0,0.6);
+}
+/*modal google and facebook buttons*/
+/*font-awesome-styling of buttons*/
+.fa-google {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-facebook-f{
+    color:var(--facebook-blue);
+    }
+    
+.facebook-btn{
+        border-radius: 20px 0px 0px 20px;
+    }
+    
+.google-btn{
+        border-radius: 0px 20px 20px 0px;
+    }
+
+.facebook-btn, .google-btn{
+ background-color: var(--mercury);
+}
+
+/*
+/*modal background shape -> would have to be added to modal content but it makes the rest invisible*/
+/*
+.background-pattern{
+    background-color: lightgreen;
+    width:auto;
+    height:200px;
+    border-radius: 100px 100px 70% 50%;
+    z-index: -1;
+    position:relative;
+}
+*/
+
+/*margins modal footer*/
+.modal-footer{
+    margin:-2em 0em 2em 0em;
+}
+
+/*removing decorative lines to bootstrap modal*/
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+    margin-bottom: -0.1%;
+}
+
+#sign-up-header-modal{
+    margin-bottom:-5%
+}
+
+#logo{
+    width:8em; 
+}
+/*
+---------------------------------------------
+05. Slider
+--------------------------------------------- 
+All styles done with bootstrap
+*/
+
+/*
+---------------------------------------------
+06. About: How it all started
+--------------------------------------------- 
+*/
+.about{
+    background-color: var(--light-green);
+    border-radius:7px;
+    margin-bottom: 15px;
+}
+
+aside .card{
+    border-radius:7px;
+}
+
+#post-its{
+    background-image: url(../images/post-its.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:427px;
+    width:100%; 
+    background-position: 50% 50%;
+}
+
+@media only screen and (min-width : 700px) {
+    #post-its {
+        height:400px;
+        background-position: 50% 50%;
+        width:auto;
+        background-size: cover;
+    }
+}
+
+#people-carousel-slides{
+    max-width:1000px;
+}
+/* 
+---------------------------------------------
+07. Tip -> Cards
+--------------------------------------------- 
+*/
+
+#tips {
+    width:100% !important;
+    background-color: var(--info);
+}
+
+#tips .card-deck{
+    display: flex;
+    justify-content: space-between;
+}
+
+#tips .card-deck .card{
+    background-color:var(--info);
+    border: none;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 90%;
+    
+}
+
+#tips .card-deck .card .card-img-top{
+    margin-top: 3px;
+    width: 70%;
+    align-self: center;
+}
+
+#tips .card-deck .card .card-body .card-title{
+    font-weight: bold;
+}
+
+#tips .card-deck .card .card-body{
+    display:flex;
+    flex-direction: column;  
+    align-items: center;
+    width:100%;
+}
+
+/*responsive PROBLEM CAN'T ALIGN BOTTOM OF ARTICLE WITH ASIDE*/
+@media only screen and (min-width: 768px){
+    #about{
+        align-items: stretch;
+    }
+}
+/* 
+---------------------------------------------
+08. Contact
+--------------------------------------------- 
+*/
+
+/*Aside picture ----------------------------->*/
+#people-connecting{
+    background-image: url(../images/8.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:300px;
+    width:100%; 
+}
+
+@media only screen and (min-width : 700px) {
+
+    #people-connecting {
+        height:500px;
+        width:100%;
+        background-position: 50% 50%;
+    }
+}
+
+#checkbox-newsletter{
+    margin-left:-1em;
+}
+
+#contact-submit-btn:hover{
+    background-color: var(--violet);
+    color:white;
+    transform: scale(1.1);
+ 
+}
+/* 
+---------------------------------------------
+09. Footer
+--------------------------------------------- 
+*/
+
+footer .right-text-content p {
+    margin-top: 5px;
+    color: var(--white);
+    font-size: 14px;
+    text-align: right;
+  }
+
+  footer .left-text-content li {
+    color: var(--white);
+    font-size: 14px;
+    margin-right: 15px;
+  }
+
+  footer .left-text-content {
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+
+  footer .logo {
+    text-align: center; 
+  }
+  
+  footer .logo a{
+    width:20%;
+  }
+  
+  #logo-footer{
+    width:13em;
+  }
+/*ROLL OVER EFFECT*/
+/*hover effects colours*/
+
+#footer-fb, #footer-instagram, #footer-twitter, #footer-youtube{
+    cursor: pointer;
+    color: var(--purple);
+    transition: all .2s ease-in-out;
+    font-size: 1.5rem;
+}
+
+#footer-fb:hover, #footer-instagram:hover, #footer-twitter:hover, #footer-youtube:hover {
+    color:var(--violet);
+    transform: scale(1.5);
+}
+
+/* responsive*/
+/*test -> 795*/
+
+@media (max-width: 991px) {
+    footer .left-text-content {
+      text-align: center;
+      margin-bottom: 30px;
+      justify-content:center;
+    }
+    footer .right-text-content p {
+      text-align: center;
+      margin-top: 30px;
+    }
+  }
+  
+  
+
+/*NEW LEARNINGS
+Looks like with bootstrap, for the image to appear in mobile view it has to have a fixed height, if you put 100% height it doesn't work
+even if you add width as auto
+
+Make cards go from a set of 4-> to a set of 2 -> to 1
+follow this:
+container
+row
+column - specify responsive sizes for each time: i.e.
+<div class= "col-lg-3 col-md-6 col-xs-12">card 1</div>
+<div class= "col-lg-3 col-md-6 col-xs-12">card 2</div>
+<div class= "col-lg-3 col-md-6 col-xs-12">card 3</div>
+<div class= "col-lg-3 col-md-6 col-xs-12">card 4</div>
+*/
