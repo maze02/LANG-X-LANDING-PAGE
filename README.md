@@ -9,7 +9,7 @@ At the time, the name choice for the company was LangXchange.
 1. Clone the repo
 
 ```
-git clone https://github.com/maze02/SPRINT-2-LANG-X-MOCK-UP1.git
+git clone https://github.com/maze02/LANG-X-LANDING-PAGE.git
 cd level3
 ```
 
