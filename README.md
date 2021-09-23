@@ -1,6 +1,6 @@
 # Lang-X
 
-Meet a language partner to have a conversation with in another language.
+Lang-X allows its users to match with a suitable language partner with similar interests and arrange a time to practice.
 Below is version 1  of the landing page. 
 At the time, the name choice for the company was LangXchange.
 
